@@ -1,32 +1,52 @@
-// Fetch the JSON file and populate the landing page
-fetch('articles.json')
+// Helper function to load JSON data (articles)
+function loadArticles() {
+  fetch('articles.json')
     .then(response => response.json())
-    .then(articles => {
-        const articleList = document.getElementById('article-list');
+    .then(data => {
+      // On the landing page (index.html), populate the article list
+      if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
+        displayArticleLinks(data);
+      }
 
-        // Clear any existing content
-        articleList.innerHTML = '';
-
-        // Loop through articles and create list items
-        articles.forEach(article => {
-            const listItem = document.createElement('li');
-
-            // Create the link element
-            const link = document.createElement('a');
-            link.href = article.url;
-            link.textContent = article.title;
-
-            // Create the date element
-            const date = document.createElement('span');
-            date.className = 'date';
-            date.textContent = article.date;
-
-            // Append the link and date to the list item
-            listItem.appendChild(link);
-            listItem.appendChild(date);
-
-            // Append the list item to the article list
-            articleList.appendChild(listItem);
-        });
+      // On an article page (template.html), populate the article content
+      else if (window.location.pathname.includes('article')) {
+        const articleId = window.location.pathname.split('/').pop();
+        displayArticleContent(data, articleId);
+      }
     })
-    .catch(error => console.error('Error fetching the articles:', error));
+    .catch(error => {
+      console.error('Error loading articles:', error);
+    });
+}
+
+// Function to display the list of article links on the landing page
+function displayArticleLinks(articles) {
+  const container = document.getElementById('article-links');
+  container.innerHTML = ''; // Clear any existing content
+
+  articles.forEach(article => {
+    const articleLink = document.createElement('a');
+    articleLink.classList.add('article-link');
+    articleLink.href = `/article/${article.id}.html`; // Link to the individual article page
+    articleLink.textContent = article.title;
+
+    container.appendChild(articleLink);
+  });
+}
+
+// Function to display the content of an individual article
+function displayArticleContent(articles, articleId) {
+  const article = articles.find(a => a.id === articleId);
+
+  if (article) {
+    const contentContainer = document.getElementById('article-content');
+    contentContainer.innerHTML = `
+      <h1>${article.title}</h1>
+      <p><strong>Summary:</strong> ${article.summary}</p>
+      <p>This is where the full content of the article would go.</p>
+    `;
+  }
+}
+
+// Load articles when the script runs
+document.addEventListener('DOMContentLoaded', loadArticles);
