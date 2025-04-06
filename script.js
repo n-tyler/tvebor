@@ -1,52 +1,18 @@
-// Helper function to load JSON data (articles)
-function loadArticles() {
-  fetch('articles.json')
-    .then(response => response.json())
-    .then(data => {
-      // On the landing page (index.html), populate the article list
-      if (window.location.pathname === '/index.html' || window.location.pathname === '/') {
-        displayArticleLinks(data);
-      }
-
-      // On an article page (template.html), populate the article content
-      else if (window.location.pathname.includes('article')) {
-        const articleId = window.location.pathname.split('/').pop();
-        displayArticleContent(data, articleId);
-      }
-    })
-    .catch(error => {
-      console.error('Error loading articles:', error);
+// Fetch the list of articles and display them as links
+fetch('articles.json')
+  .then(response => response.json())
+  .then(data => {
+    const articleList = document.getElementById('article-list');
+    
+    // Loop through articles and create a list item with a link for each one
+    data.articles.forEach(article => {
+      const listItem = document.createElement('li');
+      const link = document.createElement('a');
+      link.href = `article.html?id=${article.id}`;  // Link to article page with article ID in the URL
+      link.textContent = article.title;  // Display article title as the link text
+      listItem.appendChild(link);
+      articleList.appendChild(listItem);
     });
-}
+  })
+  .catch(error => console.error('Error fetching articles:', error));
 
-// Function to display the list of article links on the landing page
-function displayArticleLinks(articles) {
-  const container = document.getElementById('article-links');
-  container.innerHTML = ''; // Clear any existing content
-
-  articles.forEach(article => {
-    const articleLink = document.createElement('a');
-    articleLink.classList.add('article-link');
-    articleLink.href = `/article/${article.id}.html`; // Link to the individual article page
-    articleLink.textContent = article.title;
-
-    container.appendChild(articleLink);
-  });
-}
-
-// Function to display the content of an individual article
-function displayArticleContent(articles, articleId) {
-  const article = articles.find(a => a.id === articleId);
-
-  if (article) {
-    const contentContainer = document.getElementById('article-content');
-    contentContainer.innerHTML = `
-      <h1>${article.title}</h1>
-      <p><strong>Summary:</strong> ${article.summary}</p>
-      <p>This is where the full content of the article would go.</p>
-    `;
-  }
-}
-
-// Load articles when the script runs
-document.addEventListener('DOMContentLoaded', loadArticles);
