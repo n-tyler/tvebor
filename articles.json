@@ -1,0 +1,34 @@
+{
+  "articles": [
+    {
+      "id": "article1",
+      "title": "Understanding HTML Basics",
+      "date": "December 20, 2024",
+      "content": [
+        "HTML, or <b>HyperText Markup Language</b>, is the standard markup language used to create web pages. It forms the backbone of all websites and serves as the foundation for web development.",
+        "Each HTML document is made up of <i>elements</i>, which are defined by tags. These tags tell the browser how to display content, such as headings, paragraphs, links, images, and more.",
+        "To get started with HTML, you'll need a <b>text editor</b> and a basic understanding of how HTML tags work. As you progress, you can explore more advanced topics, such as <i>forms</i>, multimedia, and accessibility."
+      ]
+    },
+    {
+      "id": "article2",
+      "title": "CSS for Beginners",
+      "date": "December 18, 2024",
+      "content": [
+        "CSS, or <b>Cascading Style Sheets</b>, is a stylesheet language used to control the presentation of web pages. It allows developers to <i>separate content from design</i>, making websites more visually appealing and easier to maintain.",
+        "CSS works by applying styles to HTML elements. These styles can include <i>colors</i>, <b>fonts</b>, spacing, and layout properties. CSS can be written inline, embedded within a <style> tag, or in an external stylesheet.",
+        "By learning CSS, you can transform plain HTML documents into <b>beautiful</b>, <i>responsive websites</i>. Start with basic selectors and properties, then move on to advanced topics like animations and media queries."
+      ]
+    },
+    {
+      "id": "article3",
+      "title": "JavaScript: The Starting Point",
+      "date": "December 15, 2024",
+      "content": [
+        "<b>JavaScript</b> is a powerful programming language that enables interactivity on web pages. With JavaScript, you can create <i>dynamic content</i>, such as interactive forms, image sliders, and real-time data updates.",
+        "JavaScript can be written directly within an HTML document or linked as an external file. It interacts with the <i>Document Object Model (DOM)</i> to manipulate web page elements.",
+        "If you're new to JavaScript, start with the basics, such as <b>variables</b>, <b>functions</b>, and <i>events</i>. As you gain confidence, explore libraries and frameworks like <b>React</b> or <i>Vue.js</i> to build more complex web applications."
+      ]
+    }
+  ]
+}
