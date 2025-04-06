@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article</title>
+</head>
+<body>
+
+  <h1 id="article-title"></h1>
+  <div id="article-content"></div>
+
+  <script>
+    // Get the article ID from the URL (e.g., article.html?id=1)
+    const urlParams = new URLSearchParams(window.location.search);
+    const articleId = urlParams.get('id');
+    
+    // Fetch the article data based on the ID
+    fetch('articles.json')  // Assuming the articles are stored in this JSON file
+      .then(response => response.json())
+      .then(data => {
+        // Find the article by ID
+        const article = data.articles.find(a => a.id == articleId);
+        
+        if (article) {
+          // Populate the article page with the title and content
+          document.getElementById('article-title').innerText = article.title;
+          document.getElementById('article-content').innerText = article.content;
+        } else {
+          // If no article is found, show a "Not Found" message
+          document.getElementById('article-title').innerText = "Article Not Found";
+          document.getElementById('article-content').innerText = "Sorry, we couldn't find the article you're looking for.";
+        }
+      })
+      .catch(error => console.error('Error fetching article:', error));
+  </script>
+
+</body>
+</html>
