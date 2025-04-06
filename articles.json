@@ -1,14 +1,24 @@
-[
-  {
-    "id": "article-1",
-    "title": "The Future of Technology",
-    "summary": "This article discusses the advancements in technology and their impact on our lives.",
-    "body": "The future of technology promises to be transformative, with advancements in fields like AI, quantum computing, and renewable energy. These developments are expected to improve our lives in many ways, from more efficient healthcare systems to smarter cities. However, with these advances come challenges, including ethical concerns, privacy issues, and the displacement of jobs. This article explores how technology will evolve and what we can expect in the coming decades."
-  },
-  {
-    "id": "article-2",
-    "title": "How AI is Changing the World",
-    "summary": "Artificial Intelligence is revolutionizing industries from healthcare to entertainment.",
-    "body": "Artificial Intelligence (AI) is rapidly changing the way industries operate. In healthcare, AI is being used to analyze medical data, predict patient outcomes, and even assist in surgery. In entertainment, AI helps create realistic visual effects, recommend content, and enhance user experiences. While AI has the potential to improve many aspects of our lives, it also raises questions about job automation, bias in algorithms, and its impact on society. This article delves into how AI is shaping various sectors and what the future might hold."
-  }
-]
+{
+  "articles": [
+    {
+      "id": 1,
+      "title": "The Wonders of Nature",
+      "content": "Nature is full of amazing phenomena, from the tallest mountains to the deepest oceans. In this article, we explore some of the most breathtaking wonders of nature."
+    },
+    {
+      "id": 2,
+      "title": "Exploring the Ocean Depths",
+      "content": "The ocean is a mysterious and vast ecosystem. This article dives deep into the world of the oceans and the creatures that inhabit them."
+    },
+    {
+      "id": 3,
+      "title": "The Secrets of Space Exploration",
+      "content": "Space exploration has advanced dramatically over the past few decades. In this article, we’ll look at the key milestones in humanity's journey to explore the stars and planets."
+    },
+    {
+      "id": 4,
+      "title": "Understanding Climate Change",
+      "content": "Climate change is one of the most pressing issues of our time. This article will delve into the causes, effects, and potential solutions to mitigate the impacts of climate change."
+    }
+  ]
+}
