@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Understanding HTML Basics</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+        }
+        header {
+            text-align: left;
+            padding: 1em;
+            border-bottom: 2px solid rgb(0, 39, 76);
+            max-width: calc(100% - 2em);
+            margin: 0 auto;
+        }
+        header h1 {
+            font-size: 1.5em;
+            margin: 0;
+            color: rgb(0, 39, 76);
+        }
+        .date {
+            color: #888;
+            font-size: 0.9em;
+            margin-top: 0.5em;
+        }
+        main {
+            padding: 1em;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        footer {
+            text-align: center;
+            padding: 1em;
+            font-size: 0.9em;
+            color: rgb(0, 39, 76);
+            border-top: 1px solid #ddd;
+            margin-top: 2em;
+        }
+        .pound-signs {
+            text-align: center;
+            margin-top: 2em;
+            font-size: inherit;
+            color: rgb(0, 39, 76);
+        }
+        .return-home {
+            text-align: left;
+            margin-top: 1em;
+        }
+        .return-home a {
+            color: blue; /* Standard link color */
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        .return-home a:visited {
+            color: blue; /* Ensure visited links stay the same color */
+        }
+        .return-home a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1 id="article-title" style="color: rgb(0, 39, 76);">Loading...</h1>
+        <p class="date" id="article-date" style="color: rgb(0, 39, 76);">Loading...</p>
+    </header>
+    <main>
+        <div id="article-content" style="color: rgb(0, 39, 76);">
+            Loading article content...
+        </div>
+
+        <div class="pound-signs">
+            ###
+        </div>
+
+        <div class="return-home">
+            <a href="/">Return Home</a>
+        </div>
+    </main>
+    <footer>
+        &copy; 2024 All Rights Reserved
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
