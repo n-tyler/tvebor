@@ -52,6 +52,20 @@
       white-space: pre-wrap;
       line-height: 1.5;
     }
+
+    #article-content img {
+      display: block;
+      margin-top: 1rem;
+      max-width: 100%;
+      border-radius: 8px;
+    }
+
+    .pdf-link {
+      display: block;
+      margin-top: 1rem;
+      color: #00274C;
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
@@ -73,8 +87,30 @@
         const article = data.articles.find(a => a.id == articleId);
 
         if (article) {
+          const contentEl = document.getElementById('article-content');
+
+          // Set title and content
           document.getElementById('article-title').innerText = article.title;
-          document.getElementById('article-content').innerText = article.content;
+          contentEl.innerText = article.content;
+
+          // Add image if available
+          if (article.image) {
+            const img = document.createElement('img');
+            img.src = article.image;
+            img.alt = article.title;
+            contentEl.appendChild(img);
+          }
+
+          // Add PDF link if available
+          if (article.pdf) {
+            const pdfLink = document.createElement('a');
+            pdfLink.href = article.pdf;
+            pdfLink.target = "_blank";
+            pdfLink.className = "pdf-link";
+            pdfLink.innerText = "View PDF";
+            contentEl.appendChild(pdfLink);
+          }
+
         } else {
           document.getElementById('article-title').innerText = "Article Not Found";
           document.getElementById('article-content').innerText = "Sorry, we couldn't find the article you're looking for.";
@@ -85,4 +121,5 @@
 
 </body>
 </html>
+
 
