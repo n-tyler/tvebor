@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Articles</title>
   <style>
     body {
@@ -15,44 +15,43 @@
 
     h1 {
       text-align: center;
-      margin-top: 1rem;
+      margin-top: 2rem;
       margin-bottom: 0.5rem;
-      color: #00274C;
     }
 
     hr {
       border: none;
       height: 2px;
       background-color: #00274C;
-      margin: 0.5rem auto 1rem;
       width: 67%;
+      margin: 0 auto 1rem;
     }
 
     #article-list {
       list-style-type: none;
       padding: 0;
-      max-width: 600px;
-      margin: 1rem auto;
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .article-box {
-      background-color: #fff;
+    .article-item {
       border: 2px solid #00274C;
       border-radius: 12px;
       padding: 0.75rem 1rem;
       margin-bottom: 0.75rem;
-      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+      background-color: #fff;
+      transition: background-color 0.2s;
     }
 
-    .article-box a {
+    .article-item:hover {
+      background-color: #f0f0f0;
+    }
+
+    .article-link {
       text-decoration: none;
       color: #00274C;
       font-weight: 500;
       display: block;
-    }
-
-    .article-box a:hover {
-      text-decoration: underline;
     }
   </style>
 </head>
@@ -61,25 +60,32 @@
   <h1>Articles</h1>
   <hr>
 
-  <ul id="article-list">
-    <!-- JS will populate this list -->
-  </ul>
+  <ul id="article-list"></ul>
 
   <script>
-    const articles = [
-      { title: "Understanding JavaScript Closures", url: "#" },
-      { title: "A Guide to CSS Flexbox", url: "#" },
-      { title: "10 Tips for Clean HTML", url: "#" }
-    ];
+    fetch('articles.json')
+      .then(response => response.json())
+      .then(data => {
+        const articleList = document.getElementById('article-list');
 
-    const list = document.getElementById('article-list');
+        data.articles.forEach(article => {
+          const listItem = document.createElement('li');
+          listItem.className = 'article-item';
 
-    articles.forEach(article => {
-      const li = document.createElement('li');
-      li.className = 'article-box';
-      li.innerHTML = `<a href="${article.url}">${article.title}</a>`;
-      list.appendChild(li);
-    });
+          const link = document.createElement('a');
+          link.href = `article.html?id=${article.id}`;
+          link.className = 'article-link';
+          link.textContent = article.title;
+
+          listItem.appendChild(link);
+          articleList.appendChild(listItem);
+        });
+      })
+      .catch(error => {
+        console.error('Error loading articles:', error);
+        const articleList = document.getElementById('article-list');
+        articleList.innerHTML = "<li style='text-align:center;'>Unable to load articles.</li>";
+      });
   </script>
 
 </body>
