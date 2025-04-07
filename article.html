@@ -4,35 +4,78 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Article</title>
-</head>
-    <style>
+  <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #00274C;
     }
-    </style>
+
+    #back-button {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      padding: 0.4rem 0.8rem;
+      background-color: #fff;
+      color: #00274C;
+      border: 2px solid #00274C;
+      border-radius: 8px;
+      font-weight: 500;
+      text-decoration: none;
+    }
+
+    #back-button:hover {
+      text-decoration: underline;
+    }
+
+    h1 {
+      text-align: center;
+      margin-top: 3rem;
+      margin-bottom: 0.5rem;
+      color: #00274C;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #00274C;
+      margin: 0.5rem auto 1rem;
+      width: 67%;
+    }
+
+    #article-content {
+      max-width: 700px;
+      margin: 1rem auto;
+      padding: 0 1rem;
+      white-space: pre-wrap;
+      line-height: 1.5;
+    }
+  </style>
+</head>
 <body>
 
-  <h1 id="article-title"></h1>
+  <a href="index.html" id="back-button">Return</a>
+
+  <h1 id="article-title">Loading...</h1>
+  <hr>
+
   <div id="article-content"></div>
 
   <script>
-    // Get the article ID from the URL (e.g., article.html?id=1)
     const urlParams = new URLSearchParams(window.location.search);
     const articleId = urlParams.get('id');
-    
-    // Fetch the article data based on the ID
-    fetch('articles.json')  // Assuming the articles are stored in this JSON file
+
+    fetch('articles.json')
       .then(response => response.json())
       .then(data => {
-        // Find the article by ID
         const article = data.articles.find(a => a.id == articleId);
-        
+
         if (article) {
-          // Populate the article page with the title and content
           document.getElementById('article-title').innerText = article.title;
           document.getElementById('article-content').innerText = article.content;
         } else {
-          // If no article is found, show a "Not Found" message
           document.getElementById('article-title').innerText = "Article Not Found";
           document.getElementById('article-content').innerText = "Sorry, we couldn't find the article you're looking for.";
         }
@@ -42,3 +85,4 @@
 
 </body>
 </html>
+
