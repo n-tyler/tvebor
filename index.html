@@ -7,21 +7,81 @@
   <style>
     body {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+      color: #00274C;
     }
 
     h1 {
       text-align: center;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      color: #00274C;
+    }
+
+    hr {
+      border: none;
+      height: 2px;
+      background-color: #00274C;
+      margin: 0.5rem auto 1rem;
+      width: 67%;
+    }
+
+    #article-list {
+      list-style-type: none;
+      padding: 0;
+      max-width: 600px;
+      margin: 1rem auto;
+    }
+
+    .article-box {
+      background-color: #fff;
+      border: 2px solid #00274C;
+      border-radius: 12px;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.75rem;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
+    }
+
+    .article-box a {
+      text-decoration: none;
+      color: #00274C;
+      font-weight: 500;
+      display: block;
+    }
+
+    .article-box a:hover {
+      text-decoration: underline;
     }
   </style>
 </head>
 <body>
 
   <h1>Articles</h1>
-  <hr style="border: none; height: 2px; background-color: black;">
+  <hr>
 
-  <ul id="article-list"></ul>
+  <ul id="article-list">
+    <!-- JS will populate this list -->
+  </ul>
 
-  <script src="script.js"></script>
+  <script>
+    const articles = [
+      { title: "Understanding JavaScript Closures", url: "#" },
+      { title: "A Guide to CSS Flexbox", url: "#" },
+      { title: "10 Tips for Clean HTML", url: "#" }
+    ];
+
+    const list = document.getElementById('article-list');
+
+    articles.forEach(article => {
+      const li = document.createElement('li');
+      li.className = 'article-box';
+      li.innerHTML = `<a href="${article.url}">${article.title}</a>`;
+      list.appendChild(li);
+    });
+  </script>
 
 </body>
 </html>
+
